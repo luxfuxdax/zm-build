@@ -25,6 +25,11 @@ if [ -f /etc/redhat-release ]; then
     i=""
   fi
 
+  grep "Rocky Linux release 9*" /etc/redhat-release > /dev/null 2>&1
+  if [ $? = 0 ]; then
+    echo "RHEL9${i}"
+    exit 0
+  fi
   grep "Red Hat Enterprise Linux.*release 8" /etc/redhat-release > /dev/null 2>&1
   if [ $? = 0 ]; then
     echo "RHEL8${i}"
